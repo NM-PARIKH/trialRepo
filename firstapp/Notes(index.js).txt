@@ -1,0 +1,2510 @@
+//--------VID = 5----------
+// var React = require('react');
+
+import React from 'react';
+
+// ECMAAScript mai import aa gaya to require likhne ki nahi jarror.
+// <h1> mai likha hua html nahi, jsx hai
+// var ReactDOM = require('react-dom');
+
+import ReactDOM from 'react-dom';
+
+// index.html (html) file ma ek j vastu che->id=root, 
+// JAVASCRIPT MA AAPDE ID NE ACCESS KARVU HOY TO DOM NO USE THAY CHE, ETLE AHIYA ReactDOM AND TO AAPDE DOM MODULE NE VAPARVU PADE  NE IMPORT KARYU
+// TO react-dom NE IMPORT KARYU-> AAPDE DOM MANIPULATION KE UPDATION KARI SAKISU
+// <h1> LAKHVA MATE react NI JAROOR PADE CHE
+// <h1> tag vadu babel che, react import karyu eni jode aayu, je starting ma aapse npm install create-react-app karyu hatu ema badha modules 
+// install thai gaya hata
+// babel e new JS(ECMAAScript vada) ne juna(ECMAAScript vagar) na ma convert kare che.
+
+// ReactDOM.render(<h5> HELLO WORLD!! </h5>, document.getElementById('root'));
+
+// render EK METHOD CHE -> JENO SIMPLE MATLAB THAY CHE KE DIKHAO/DIKHANA
+// ReactDOM.render('Kya dikhana hai', 'kaha dikhana hui', 'callback function');
+// document.getElementByID() to aapde bau use karyu che JS ma
+
+
+
+
+
+
+
+//---------VID = 6-----------
+// JSX = JavaScript Extension/ JavaScript XML
+// <h1> tag ma html jevo part e html nathi, ene aapde JSX Expression in React
+// TO JO AAPDE AA JSX USE KARVU HOY TO react IMPORT KARVU COMPULSORY CHE
+
+//using pure js we can write the code like
+//           var h1 = document.createElement("h1");
+//           h1.innerHTML = "Hello Bro!!";
+//           document.getElementByID("root").appendChild(h1);
+
+
+
+
+
+
+//---------VID = 7-----------
+// ReactDOM.render(<div>
+  //   <h1> HELLO WORLD </h1> 
+  //   <p> REACT </p>
+  //   <p> LEARNING </p>
+  //  </div>, 
+  // document.getElementById('root'));
+// //render ma su lakhvanu che ema ek j (single) element j aai sake to aapde ek div banai ne ema lakhyu
+
+ReactDOM.render([
+                  <h1> HELLO WORLD </h1> ,
+                  <p> REACT </p>,
+                  <p> LEARNING </p>
+                ], 
+                document.getElementById('root'));
+// // pan react na version 16+ ma aapde array ele. type ni rite pan aa lakhi sakie chie.(pakage.json ma react version 18.2.0)
+// array ni rite lakhie etle , pan aavse 
+                
+                
+
+
+
+                
+                
+//---------VID = 8-----------
+// uper na j code ma version 16 pela aapde div lakhta pan inspect ma jai ne body->div-root->or ek div aavtu hatu
+// enathi css lakhvama problem padi sake che to aapde div ni jagya e React.Fragment lakhisu
+// anathi div thi faster execution ne less memory consumption thase
+// pan jo e pan na lakhvu hoy to aapde kai j nai lakhie -> simple <> je pan che e(, vagar) </>
+// Ene syntectic sugar kevay
+
+
+
+
+
+
+
+//---------VID = 9-----------
+// QUE : create react app from scratch, h1, p ne orderd list no use kari ne kaik lakho...
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(<>
+  <h1> FIRST CHALLENGE </h1>
+  <p> I AM TRYING TO COMPLETE IT, DEKHTE HAI AB HOTA HAI KI NAHI </p>
+  <ol>
+    <li>raj</li>
+    <li>mehul</li>
+    <li>rahul</li>
+    <li>vikas</li>
+    <li>vinay</li>
+  </ol>
+</>
+,document.getElementById('root')
+);
+
+
+
+
+
+
+
+//---------VID = 10-----------
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const myName = 'SHREY';
+
+ReactDOM.render(<>
+  <h1>My name is {myName}.</h1>
+  <p> sum of two nums is {5+3}</p>
+  </>
+  , document.getElementById('root'));
+// HTML ma JS use nai thay jo hu simple myName j lakhis to My name is myName. j print thase 
+// aapde JS ni andar HTML jevu use karie chie, have e HTML ma fari JS use karvu hoy to {} no use karihu
+// {} ma aapde khali variables lakhi shakishu, statements nahi  
+
+
+
+
+
+
+//---------VID = 11-----------
+// USING TEMPLET LITERALS
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const fname = 'SHREY';
+const lname = 'PARIKH';
+
+ReactDOM.render(<>
+  {/* <h1>My name is {fname + " " + lname}</h1> */}
+  <h1> { `MY NAME IS ${fname} ${lname}.` } </h1>
+  <p> sum of two nums is {5+3}</p>
+  </>
+  , document.getElementById('root'));
+
+  // JS ni jem teplet literals no use karyo, {} ma statement lakhvanu `` no use karvano, variable print karava ${} no use
+
+
+
+
+
+
+
+//---------VID = 12-----------
+// CHALLENGE TYPE...
+// BAS DATE NE TIME MATE JOI LEVU, THIK CHE E TO...
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const fname = 'SHREY';
+const lname = 'PARIKH';
+const currDate = new Date().toLocaleDateString();
+const currTime = new Date().toLocaleTimeString();
+ReactDOM.render(
+<>
+  <h1> { `MY NAME IS ${fname} ${lname}.` } </h1>
+  <p> Current Date is = {currDate} </p>
+  <p> Current Time is = {currTime} </p>
+</>
+  , document.getElementById('root'));
+
+
+
+
+
+
+
+//---------VID = 13-----------
+// USE OF ATTRIBUTES IN JSX
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const fname = 'SHREY';
+const img1= "https://picsum.photos/200/300";
+const img2= "https://picsum.photos/250/300";
+const img3= "https://picsum.photos/300/300";
+
+const links = "https://www.youtube.com/";
+
+ReactDOM.render(
+<br>
+  <h1 contentEditable = "true"> MY NAME IS {fname}. </h1>
+  {/* <img src="https://picsum.photos/200/300" alt="image from lorem site" /> */}
+  <img src={img1} alt="image from lorem site" />
+  <img src={img2} alt="image from lorem site" />
+  <a href={links} target="_blank">
+    <img src={img3} alt="image from lorem site" />
+  </a>
+</>
+  , document.getElementById('root'));
+// HTML ma attribute vaprie e j rite pan tya camelCase nota use karta->contenteditable pan ahiya -> contentEditable
+// enathi bas aapde je lakhyu che e edit kari sakase
+// img tag mate aapde HTML ma </img> nota lakhta karan ke tag ni vache kai notu aavtu(ena childeren nota),
+// ahiya <img /> karishu ene 'SELF CLOSING TAG' kevay 
+// """"""SINGLE TAG NE JSX MA USE KARVA SELF CLOSING TAG NO J USE THASE. -> </br>""""""
+// img1 const banayo to jsx ma use karva {} vapryu
+// last ma 3rd photo par link add kari che
+
+
+
+
+
+
+
+//---------VID = 14-----------
+// ** IMPORTING CSS/class vs className in CSS
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+// IMPORTING CSS FILE
+import './index.css'
+
+const fname = 'SHREY';
+const img1= "https://picsum.photos/200/300";
+const img2= "https://picsum.photos/250/300";
+const img3= "https://picsum.photos/300/300";
+
+const links = "https://www.youtube.com/";
+
+ReactDOM.render(
+<>
+  <h1 className='heading'> MY NAME IS {fname}. </h1>
+  <div className = 'img_div'>
+  <img src={img1} alt="image from lorem site" />
+  <img src={img2} alt="image from lorem site" />
+  <a href={links} target="_blank">
+    <img src={img3} alt="image from lorem site" />
+  </a>
+  </div>
+</>
+  , document.getElementById('root'));
+// ** HTML ma CSS use karva tag ma class lakhta pan react ma class reserved che to aapde className lakhishu **
+// CSS samjvanu baki che/samji levu
+
+
+>>>>>>>>>>> CSS <<<<<<<<<<<<
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.heading{
+    color: dodgerblue;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-shadow: 0px 1px 4px lightslategrey;
+    margin: 50px 0px;
+}
+
+.img_div{
+    display: flex;
+    justify-content: center;
+}
+
+.img_div{
+    width: 300;
+    height: 350;
+}
+
+
+
+
+
+
+
+//---------VID = 15-----------
+// GOOGLE FONT ADD KARTA SIKHVYU CHE, 3 min no video che, jarror pade to joi levu, same che pela add karta em
+// HTML ma link paste karo, CSS ma font-family paste karo
+
+
+
+
+
+
+//---------VID = 16-----------
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css'
+
+const fname = 'SHREY';
+const img1= "https://picsum.photos/200/300";
+const img2= "https://picsum.photos/250/300";
+const img3= "https://picsum.photos/300/300";
+const links = "https://www.youtube.com/";
+
+// .heading{
+//   color: dodgerblue;
+//   text-align: center;
+//   text-transform: capitalize;
+//   font-weight: bold;
+//   text-shadow: 0px 1px 4px lightslategrey;
+//   margin: 50px 0px;
+// }
+
+const heading = {
+  // key : 'value';   --> AAJ FORMATE MA LAKHVAN, BADHI VALUE '' MA
+  color : 'dodgerblue',
+  textTransform : 'capitalize',
+  // BADHA NAME TO SAME RESE PAN AAPDE ENE 'camelCase' ma lakhvana
+  textAlign : 'center',
+  fontWeight: 'bold',
+  textShadow: '0px 1px 4px lightslategrey',
+  margin: '50px 0px'
+};
+//JSX ma JS lakhva aapde {} no use karie chie, to aapde const heading = ''{xyz...};'' ma je {} che ene {} ni sathe JS vada {} ma lakhvanu
+// to e kaik style={{xyz...}} aavu banse
+// pan aa ema bau motu thai jay to aapde const heading jevu banai ne karyu che em style={heading} karishu.
+
+ReactDOM.render(
+<>
+  <h1 style={heading} > MY NAME IS {fname}. </h1>
+  <div className = 'img_div'>
+  <img src={img1} alt="image from lorem site" />
+  <img src={img2} alt="image from lorem site" />
+  <a href={links} target="_blank">
+    <img src={img3} alt="image from lorem site" />
+  </a>
+  </div>
+</>
+  , document.getElementById('root'));
+
+// EXTERNAL CSS - alag file ma jem css lakhie(index.css) ene external css kevay
+// INTERNAL CSS - je file ma JSX code lakhie chie ema css code lakhie to ene internal css kevay
+// INLINE CSS - ek,same line ma(eg. h1 tag ma) j css lakhu to ene inline css kevay
+// HTML ma inline css bau ochu vapratu pan REACT ma eno bau use thay che
+// HTML ma inline css lakhva html file ma div id=root che tya baju ma style="width=, font=, font-size= ..." kari ne lakhvanu
+// 
+
+
+
+
+
+
+//---------VID = 17-----------
+// MINI PROJECT JEVU, thik che bau khas pan nathi, DYNEMIC CSS(line 16), SPAN TAG NO USE(line 29) JOI LEVU
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+
+let currTime = new Date(2022, 5, 5, 13);
+currTime = currTime.getHours();
+let msg = '';
+const cssStyle = {
+  color : 'green'
+}
+
+if(currTime>=1 && currTime<12){
+  msg = 'Good Morning';
+  //DYNEMIC CSS -> ALAG THI STYLE KARYU
+  cssStyle.color = 'green';
+}
+else if(currTime>=12 && currTime<19){
+  msg = 'Good Afternoon';
+  cssStyle.color = 'orange';
+}
+else{
+  msg = 'Good Night';
+  cssStyle.color = 'black';
+}
+
+ReactDOM.render(
+  <>
+    <h1 > Hello Sir, <span style={cssStyle}> {msg} </span> </h1>
+  </>
+  , document.getElementById('root')
+);
+// BAKI NI STYLING index.css MA LAKHI CHE, JOVU HOY TO VIDEO JOI LEVO(vid-17:mini project #1)
+
+
+
+
+
+
+
+
+//---------VID = 18-----------
+import React from 'react';
+import ReactDOM from 'react-dom';
+// IMPORTING PERTICULAR JSX FILE, (no need to give extension to JSX files)
+import App from './App';
+
+ReactDOM.render(
+  // <>
+  //   {/* <h1> My name is SHREY. </h1> */}
+  //   <Heading/>
+  //   {/* <p> This is my code. </p> */}
+  //   <Para />
+  //   {/* <ol>
+  //     <li> C </li>
+  //     <li> C++ </li>
+  //     <li> Java </li>
+  //     <li> Python </li>
+  //   </ol> */}
+  //   <List />
+  // </>
+  <App />
+  , document.getElementById('root')
+);
+
+
+>>>>>>>>>>>>>>> Heading <<<<<<<<<<<<<
+// KHALI React NE IMPORT KARVANU
+import React from "react";
+// FILE NU NAME MA PELO CHAR CAPITAL-> .jsx EXTENSION
+// FUNCTION NAME = FILE NAME
+function Heading(){
+    return <h1> My name is SHREY. </h1>
+}
+// AA HAAL MATE AAVU J LAKHVANU(FILE NAME)
+export default Heading;
+// SAME Heading NE IMPORT KARVANU.
+
+>>>>>>>>>>>>>>>>> Para <<<<<<<<<<<<<<<
+import React from "react";
+function Para(){
+    return <p> This is my code. </p>
+}
+export default Para;
+
+
+>>>>>>>>>>>>>>> List <<<<<<<<<<<<<<<<
+import React from "react";
+function List(){
+    return (
+    <ol>
+        <li> C </li>
+        <li> C++ </li>
+        <li> Java </li>
+        <li> Python </li>
+    </ol>
+    );
+}
+export default List;
+
+
+>>>>>>>>>>>>>>>>> App <<<<<<<<<<<<<<<<<<<
+import Heading from './Heading';
+import Para from './Para';
+import List from './List';
+function App(){
+    return(
+    <>
+        <Heading />
+        <Para />
+        <List />
+    </>
+    );
+}
+export default App;
+// AAMA IMPORT React NA KARYU KARAN KE AAMA JSX(HTML) JEVU KAI USE J NAI KARYU
+// BAKI MA IMPORT KARYU KARAN KE EME HTML JEVU->h1,p TAG USE KARYA
+
+
+
+
+
+
+
+
+
+
+//---------VID = 19-----------
+// VID=17 NA CODE NE COMPONENTS NI MADAD THI LAKHYO
+
+// index.js NO CODE
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './App';
+
+ReactDOM.render(
+  <App />
+  , document.getElementById('root')
+);
+
+
+
+// App.jsx NO CODE
+import React from "react";
+
+function App(){
+    let currTime = new Date(2022, 5, 5, 16);
+    currTime = currTime.getHours();
+    let msg = '';
+    const mystyle={color:'dark pink'}
+    const cssStyle = {
+    color : 'green'
+    }
+    if(currTime>=1 && currTime<12){
+    msg = 'Good Morning';
+    cssStyle.color = 'green';
+    }
+    else if(currTime>=12 && currTime<19){
+    msg = 'Good Afternoon';
+    cssStyle.color = 'orange';
+    }
+    else{
+    msg = 'Good Night';
+    cssStyle.color = 'black';
+    }
+
+    // JE MAIN CHE E J RETURN MA LAKHYU.
+    return(
+        <h1 style={mystyle}> Hello Sir, <span style={cssStyle}> {msg} </span> </h1>
+    );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 20-----------
+// EXPORT INDETAIL EXPLAIN
+import React from "react";
+import ReactDOM from "react-dom";
+// import favCol from "./App";        // AA SIMPLE KHALI DEFAULT VAPARVU HOY TO
+// METHOD-1 -> COMMONLY USED 
+import favCol,{name, add, editor} from "./App";    // DEFAULT JODE {} VADU BADHU SAME MUKI DIDHU
+// METHOD-2 -> NOT SO USED
+// import * as ans from './App';
+
+ReactDOM.render(
+  <>
+    <h1> HELLO FROM ME</h1>
+
+    <h3> {favCol} </h3> 
+    <h3> {name} </h3> 
+    <h3> {add} </h3> 
+    <h3> {editor()} </h3> 
+    {/* function hatu to editor() lakhyu */}
+
+
+    // AS PER METHOD-2
+    {/* <h3> {ans.default} </h3> 
+    <h3> {ans.name} </h3> 
+    <h3> {ans.add} </h3> 
+    <h3> {ans.editor()} </h3>  */}
+  </>
+  , document.getElementById('root')
+);
+
+// method-1 ne 2 ne vapravanu joi levu, default mate khas badlay che.
+
+
+// >>>>App.js nu<<<<
+const favCol = "Blue";
+
+const name = "SHREY";
+const add = "VADODARA";
+
+function editor(){
+    let ediname = "VsCode";
+    return ediname;
+}
+
+// default EXPORT EK J HASE, AAPDE BIJU PAN EXPORT KARI SAKISHU PAN DEFAULT MA NAI NE ENI ALAG RIT CHE.
+export default favCol;
+
+// const, variable, function pan export kari sakay
+// DEFAULT EK J CHE TO AA J RITE ENE EXPORT KARVANA
+// NE index,js NA IMPORT MA AAJ SAME {} PASTE KARI DEVANU, JODE JODE ENE TYA USE KARVANU PAN JOI LEVU
+export {name, add, editor};
+
+
+
+
+
+
+
+
+
+//---------VID = 21-----------
+// CHALLENGE TYPE -> USE COMPONENTS 
+
+/*import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <App /> ,document.getElementById("root")
+);*/
+//or we can write it like
+import React from "react";
+import ReactDOM  from "react-dom";
+import {add,sub,mul,div} from "./App";
+ReactDOM.render(<><h1>Hello</h1>
+    <ul>
+        <li>Sum of two no is {add(40,4)}</li>
+        <li>Sub of two no is {sub(40,4)}</li>
+        <li>Mul of two no is {mul(40,4)}</li>
+        <li>Div of two no is {div(30,4)}</li>
+    </ul>
+</>,document.getElementById('root')); 
+
+// >>>>>> App.jsx file<<<<<<
+/*import React from 'react';
+import {add, sub, mul, div} from './Calc';
+
+function App(){
+    return(
+        <>
+        <ul>
+        <li>Sum of two numbers is : {add(30, 20)}</li>
+        <li>Sub of two numbers is : {sub(30, 20)}</li>
+        <li>Mul of two numbers is : {mul(3, 2)}</li>
+        <li>Div of two numbers is : {div(30, 4)}</li>
+        </ul>
+    </>
+    );
+}
+export default App;*/
+//IMPORT KARELU JOI LEVU, Calc NU SAME J LAKHVU, JSX(HTML type) NO USE KARTO TO React IMPORT KARYU
+//or my method
+function add(a, b){
+    return a+b;
+}
+function sub( a, b){
+    return a-b;
+}
+function mul( a, b){
+    return a*b;
+}
+function div( a, b){
+    return a/b;
+}
+export {add,sub,mul,div};
+
+// >>>>>>> Calc.jsx file <<<<<<<   jo mari method thi karu to aa file na banavu to chale
+function add(a, b){
+    let sum = a+b;
+    return sum;
+}
+function sub(a, b){
+    let dif = a-b;
+    return dif;
+}
+function mul(a, b){
+    let mans = a*b;
+    return mans;
+}
+function div(a, b){
+    let dans = a/b;
+    dans = dans.toFixed(2);
+    return dans;
+}
+
+export {add, sub, mul, div};
+// DEFAULT NI NAI JAROR, KAI IMPORT NI PAN NAI JAROOR
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------VID = 22 TO 27 -------------------------
+//MOST SIMPLE 
+import React from "react";
+import ReactDOM from 'react-dom';
+
+function Info(){
+  return(
+    <>
+      Student Name : 'Rahul'
+      <br/>
+      Student Address : 'Vadodara'
+      <br/>
+      Student Collage : 'DDU'
+      <br/> <br/> <br/>
+    </>
+  )
+}
+
+ReactDOM.render(
+  <>
+    <Info />
+    <Info />
+    <Info />
+  </>, document.getElementById('root')
+);
+// PAN AAMA STUDENT2 MATE NAVI INFO NAI USE KARI SAKAY, AA J SAME INFO RESE
+// TO HU CARD MA J INPUT INFO AAPIS --->>> ENE KEVAY PROPERTIES--->>>"PROPS"
+
+
+
+---------------------------------------------------------------------------------
+//>>>>>>>  PROPS + COMPONENTS   <<<<<<<<<
+import React from "react";
+import ReactDOM from 'react-dom';
+import Info from './App';
+
+ReactDOM.render(
+  <>
+    <Info 
+      sname = 'Rahul'
+      sadd = 'Vadodara'
+      sclg = 'DDU'
+    />
+    <Info 
+      sname = 'Ramesh'
+      sadd = 'Surat'
+      sclg = 'MSU'
+    />
+    <Info 
+      sname = 'Rakesh'
+      sadd = 'Rajkot'
+      sclg = 'LD'
+    />
+  </>, document.getElementById('root')
+);
+
+
+>>> App.jsx <<<
+import React from "react";
+
+function Info(props){
+    return(
+        <>
+          Student Name : {props.sname}
+          <br/>
+          Student Address : {props.sadd} 
+          <br/>
+          Student Collage : {props.sclg}
+          <br/> <br/> <br/>
+        </>
+      );
+}
+export default Info;
+
+
+-----------------------------------------------------------------------------
+>>>>>>>>> NOW USE OF ARRAY <<<<<<<<<
+import React from "react";
+import ReactDOM from 'react-dom';
+import Info from './App';
+import Sdata from "./Sdata";
+
+ReactDOM.render(
+  <>
+    <Info 
+      sname = {Sdata[0].sname}
+      sadd = {Sdata[0].sadd}
+      sclg = {Sdata[0].sclg}
+    />
+    <Info 
+      sname = {Sdata[1].sname}
+      sadd = {Sdata[1].sadd}
+      sclg = {Sdata[1].sclg}
+    />
+    <Info 
+      sname = {Sdata[2].sname}
+      sadd = {Sdata[2].sadd}
+      sclg = {Sdata[2].sclg}
+    />
+  </>, document.getElementById('root')
+);
+
+
+>>> Sdata.jsx <<<
+const Sdata = [
+    {
+        sname : 'Rahul',
+        sadd : 'Vadodara',
+        sclg : 'DDU'
+    },
+    {
+        sname : 'Ramesh',
+        sadd : 'Surat',
+        sclg : 'MSU'
+    },
+    {
+        sname : 'Rakesh',
+      sadd : 'Rajkot',
+      sclg : 'LD'
+    }
+]
+export default Sdata;
+
+
+>>> App.jsx <<<
+import React from "react";
+function Info(props){
+    return(
+        <>
+          Student Name : {props.sname}
+          <br/>
+          Student Address : {props.sadd} 
+          <br/>
+          Student Collage : {props.sclg}
+          <br/> <br/> <br/>
+        </>
+      );
+}
+export default Info;
+// AA HAAL MA VADHARE LAGE CHE KARAN KE CODE MOTO NATHI + CSS KE KAI BIJU USE NAI THATU
+// JO Sdata MA DIRECT DATA MADE TO BAU KAM LAGSE(API THI DATA MADTO HOY TYARE)
+
+
+
+-----------------------------------------------------------------------------------------------------------
+>>>>>>>>>>>>>>> MOST IMPORTANT MAP TECHNIQUE <<<<<<<<<<<<<<<<
+// MAP SYNTEX
+const oldarr = [1, 2, 3];
+const newarr = oldarr.map((function(cval, ind, oldarr){
+  return ind + " : " + cval;
+});
+// 0 : 1 nl 1 : 2 nl 2 : 3
+
+const stuData = [
+  {id : 1, name : 'jljger', degree : 'asgwr'},
+  {id : 2, name : 'tgrerw', degree : 'uewof'},
+  {id : 3, name : 'bgrety', degree : 'hefrr'},
+]
+
+const newData = stuData.map( (cval) => {
+  return `Name is ${cval.name} and degree is ${cval.degree}`;
+});
+console.log(newData);
+// Name is jljger and degree is asgwr ......
+
+
+>>>>  index.js  <<<<
+import React from "react";
+import ReactDOM from 'react-dom';
+import Info from './App';
+import Sdata from "./Sdata";
+
+ReactDOM.render(
+  <>
+    {Sdata.map( (sinfo) => {
+      return(
+        <Info 
+          key = {sinfo.id}
+          sname = {sinfo.sname}
+          sadd = {sinfo.sadd}
+          sclg = {sinfo.sclg}
+        />
+      );
+    } )}
+
+    {/* 
+    function myName(shrey){        }        // SIMPLE FUNCTION
+    }
+    const myName = (shrey) => {            // FAT ARROW FUNCTION
+    } 
+    */}
+
+  </>, document.getElementById('root')
+);
+// BEST WAY TO WRITE, MAP IS SO IMPORTANT
+// ....."WRITE MAP IN {} ALWAYS AS WE ARE USING JS IN JSX"....
+
+
+>>>>  App.jsx <<<<
+import React from "react";
+function Info(props){
+    return(
+        <>
+          Student Name : {props.sname}
+          <br/>
+          Student Address : {props.sadd} 
+          <br/>
+          Student Collage : {props.sclg}
+          <br/> <br/> <br/>
+        </>
+      );
+}
+export default Info;
+
+
+>>>>  Sdata.jsx  <<<<
+const Sdata = [
+    {
+        id : 1,
+        sname : 'Rahul',
+        sadd : 'Vadodara',
+        sclg : 'DDU'
+    },
+    {
+        id : 2,
+        sname : 'Ramesh',
+        sadd : 'Surat',
+        sclg : 'MSU'
+    },
+    {
+        id : 3,
+        sname : 'Rakesh',
+        sadd : 'Rajkot',
+        sclg : 'LD'
+    }
+]
+
+export default Sdata;
+//................................
+// DAREK COMPONENT PASE POTANI EK UNIQUE IDENTITY HOVI JOIE.
+// TO Sdata MA AAPDE UNIQUE KEY AAPI, E KAI PAN HOI SAKE CHE, INT,STRING KAI B PAN UNIQUE
+// AND index.js MA KHALI key = {sinfo.id(ke kai pan)} LAKHVANU KHALI
+// key KEYWORD J USE KARVO.
+// kry KOI PROPS NATHI TO ENE AAPVANI NAI JAROOR.
+
+
+
+// REACT DEVELOPER TOOLS VADA MA index.js MA CHE ENE ALAG JSX FILE MA NAKHI NE ENO COMPONENT banayo
+// EM KARVATHI index.js MA EK J COMPONENT RESE
+
+
+//eni pachhi if-else shikhavyu chhe ne eni pachhi ternary Operator e to c/c++ ma karie evu j chhe thik chhe jaroor lage to e vakhat joi levu
+
+
+//ena pachhi slot machine vali game banavi chhe jema emojis no use karva windows+. karvu 
+//ne e video 28 ma aapel chhe jovu hoy to
+
+
+
+
+
+//---------   VID = 30    ...  HOOKS  ...  usestate()   -----------
+// usestate() NE J HOOK KEVAY
+// usestate() EK FUNCTION CHE JE EK ARRAY RETURN KARE CHE KE JEMA 2 ITEMS HOY.
+// EK STATE OBJECT AND BIJU UPDATED FUNCTIOM
+// STARTING MA usestate(val) MA JE VALUE AAPISHU E KEVASE INITIAL DATA
+// const [currentData, updatedData] = usestate(initialData)
+// AA UPER const[] KARYU ENE ARRAY DESTRUCTURING KEVAY
+// EG.: const name = ["rahul", "rakhesh", "ritam"];
+// ARRAY DESTRUCTURING -->  const[name1, name2, name3] = name
+// jo hu name1 lakjish to mane rahul aapse
+.....
+//const[count, setCount] = useState(0);
+//  const IncNum = () =>{
+//    setCount(count+1);
+//  }
+// 5 CHE E count MA PASS KARYO
+// AHIYA setCount EK FUNCTION CHE, EMA JE VAL PASS KARIGHU E AAPDU currentData THAI JASE.
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './App';
+ReactDOM.render(
+  <App />, document.getElementById('root')
+);
+
+
+>>>>>>   App.jsx <<<<<
+// JEVU useState LAKHISHU KE IMPORT MA E AAI JASE
+import React, { useState } from "react";
+
+const App = () => {
+  const[count, setCount] = useState(0);
+
+  const IncNum = () =>{
+    setCount(count+1);
+  }
+  return(
+    <>
+      <h1  style={{color:"yellow", backgroundColor:"black"}}> {count} </h1>
+      <button onClick={IncNum}  style={{color:"yellow", backgroundColor:"black"}}> Click Me </button>
+    </>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 31-----------
+// TIME BATAVE, BUTTON CLICK KARU KE REFRESH KARU UPDATED TIME BATAVO JOIE
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './App';
+ReactDOM.render(
+  <App />, document.getElementById('root')
+);
+
+
+.......  App.jsx  ........
+import React, { useState } from "react";
+const App = () => {
+  let currTime = new Date().toLocaleTimeString();
+  const[Time, upTime] = useState(currTime);
+  const getTime = () => {
+    upTime(new Date().toLocaleTimeString());
+  }
+  return(
+    <>
+    <h1>{Time}</h1>
+    <button onClick={getTime}> GET TIME</button>
+    </>
+  )
+}
+export default App;
+
+//aa me mari rite try karyu ne luckily thai gayu 😁🤩
+import React, { useState } from "react";
+
+const App=()=>{
+    const state = useState();
+    const currTime = new Date().toLocaleTimeString();
+const [count,setCount] = useState(0);
+const IncNum=()=>{
+    setCount(currTime);
+};
+    return(
+        <>
+            <h1 style={{color:"Blue",width:"100%",height:"50px", backgroundColor:"Yellow",textAlign:"center",justifyContent:"center",alignContent:"center"}}>{currTime}</h1>
+            <button onClick={IncNum} style={{color:"yellow",padding:"12px 20px",border:"2px solid red",borderRadius:"5px",textAlign:"center",textTransform:"uppercase",cursor:"pointer", justifyContent:"center",alignContent:"center",backgroundColor:"black",display:"flex"}}>Show Time</button>
+        </>
+    );
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 32-----------
+// REAL TIME DIGITAL CLOCK
+import React, { useState } from "react";
+const App = () => {
+  let currTime = new Date().toLocaleTimeString();
+  const[cTime , newTime] = useState(currTime);
+  const updateTime = () => {
+    newTime(new Date().toLocaleTimeString());
+  }
+  setInterval(updateTime, 1000);
+  return(
+    <h1>{cTime}</h1>
+  )
+}
+export default App;
+
+//maru lakhelu css sathe 😀😀
+import React, { useState } from "react";
+const heading={textAlign:"center",height:"50%",margin:"50px",padding:"50px",textTransform:"uppercase",color:"cyan",background:"Green"}
+const App=()=>{
+    let time = new Date().toLocaleTimeString();
+    const[t,settime]=useState(time);
+    const updateTime=()=>{
+        settime(new Date().toLocaleTimeString());
+    }
+    setInterval(updateTime,1000);
+       return(
+           <>
+            <h1 style={heading}>{t}</h1>
+           </>
+       );
+}
+export default App;
+
+
+
+
+
+
+
+
+
+//---------VID = 33-----------
+
+// KAM BAKI CHE, PAN KAI BAU KHAS notu?? 
+// HOOKS NO J USE KARELO 3-4 VAPARVU  
+
+
+//me try karyo chhe mari rite
+import React, { useState } from "react";
+// let heading = {
+//     width: "100%",
+//     height: "100vh",
+//     display: "flex",
+//     flexDirection: "column",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     background: "cyan"
+// }
+const but = { color: "yellow", padding: "12px 20px", border: "2px solid red", borderRadius: "5px", textAlign: "center", textTransform: "uppercase", cursor: "pointer", justifyContent: "center", alignContent: "center", backgroundColor: "black", display: "flex" }
+const App = () => {
+    let cl = "yellow";
+    const [bg,setBg]=useState(cl);
+    let nm = "Click Me";
+    const [name,setname]=useState(nm);
+    const changeBg=()=>{
+        cl="red";
+        setBg(cl);
+        setname("OHO!! 😁😀");
+    };
+    const bgBack=()=>{
+        cl="yellow";
+        setBg(cl);
+        setname(nm);
+    };
+    return (
+        <>
+            <div style={ {
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: bg
+}} >
+                <button style={but} onMouseLeave={changeBg} onMouseEnter={bgBack}>{name}</button>
+            </div>
+        </>
+    );
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 34   ...  Starting of Form  ...   -----------
+// ..............  SAME index.js   ................
+
+
+// ...   App.js   ...
+import React, { useState } from "react";
+const App = () => {
+  const [name, newName] = useState("");
+  const [fullName, newfullName] = useState("");
+
+  const inputEvent = (event) => {
+    console.log(event.target.value);
+    newName(event.target.value);
+  }
+
+  const onSubmit = () =>{
+    newfullName(name);
+  }
+
+  return(
+    <>
+      <h1> Hello {fullName} </h1>
+      <input type='text' placeholder="Enter Your Name" onChange={inputEvent} value={name}/>
+      <button onClick={onSubmit} > Submit </button>
+    </>
+  )
+}
+export default App;
+// value e che ke je tamri textfield ma dekhase
+// value="" lakhie to kai dekhase j nai, etle aam karyu
+// THODO CONFUSING VIDEO HATO, SAMAJVANO TRY KARVO BAKI JOI LEVO (Forms in React) 
+
+
+
+
+******************************************************************************************
+//me mari rite try karel chhe
+import React, { useState } from "react";
+const hdiv= {
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "cyan"
+}
+const but = { color: "yellow", padding: "12px 20px", border: "2px solid red", borderRadius: "5px", textAlign: "center", textTransform: "uppercase", cursor: "pointer", justifyContent: "center", alignContent: "center", backgroundColor: "black", display: "flex" }
+const hh1={
+    color:"red",
+    background:"transperent",
+    textShadow:"0 2px 2px yellow"
+}
+const App=()=>{
+   
+    const[onc,chanI] = useState();
+    const[oncl,setname] = useState();
+    const changeV=(event)=>{
+       chanI(event.target.value);
+    }
+    const cv=()=>{
+        setname(onc);
+     }
+    return(
+        <>
+         <div style={hdiv}>
+             <h1 style={hh1}>Hello  {oncl}</h1>
+             <input style={{padding:"10px 20px",margin:"20px 0",textAlign:"center"}} type="text" placeholder="Enter Your Name Here" onChange={changeV} value={onc}/>
+             <button style={but} onClick={cv}>Submit</button>
+         </div>
+        </>
+    );
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 35-----------
+// KHALI App.jsx NO CODE CHE, index.js NO CODE SAME
+import React, { useState } from "react";  
+const App = () => {
+  const [firstname, newfirstName] = useState("");
+  const [fullfirstName, newFullfirstName] = useState("");
+  const [secondname, newsecondName] = useState("");
+  const [fullsecondName, newFullsecondName] = useState("");
+
+  const inputEvent = (event) => {
+    newfirstName(event.target.value);
+  }
+
+  const inputEventTwo = (event) => {
+    newsecondName(event.target.value)
+  }
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    newFullfirstName(firstname);
+    newFullsecondName(secondname);
+  }
+  return(
+    <>
+      <form onSubmit={onSubmit}>
+        <h1> HELLO {fullfirstName} {fullsecondName} </h1>
+        <input type="text" placeholder="Enter First Your Name" onChange={inputEvent} value={firstname} />
+        <input type="text" placeholder="Enter Second Your Name" onChange={inputEventTwo} value={secondname} />
+        <button type="submit"> SUBMIT </button>
+      </form>
+    </>
+  )
+}
+export default App;
+
+// AMA FORM TAG NO USE KARYO
+// button type submit karyu, to e jate form reset kari dese, ene prevent karva form tag ma ek onSubmit ma ek function lakhyu
+// eme event.preventDefault(); aa lakhyu je sublit par form ne reset nai thava default
+// ek aur textfield add kari, enathi code thodo aur moto thai gayo, pan logic prev. jevu j che
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 36-----------
+// PELA VADA MA KHALI 2 FIELD HATI TO PAN AATLU KARYU
+// VADHARE HOY TO KETLO PROBLEM PADE, TO ENA MATE AAPDE AAVU KARISHU
+
+import React, { useState } from "react";  
+
+const App = () => {
+  const [fullName, setfullName] = useState({
+    fname : '',
+    lname : ''
+  });
+  // useState MA AAPDE OBJECT PAN BANAI SAKIE CHIE(object mate aapde value : rite aapishu)
+  // 2 OBJECT BANAYA fname, lname
+  // fullName NA fname NE lname  MA STATING MA EMPTY STRING CHE.
+
+  const inputEvent = (event) => {
+    console.log(event.target.value);
+    // CONSOLE PAR 2 MATHI KOI MA B LAKHISHU, SAME EVENT CALL THAY CHE TO BANNE MA CONSOLE PAR PRINT THASE
+
+    const name = event.target.name;
+    // PAN AHIYA AAPDE name FIELD LAI LAISHU KE KAI FIRLD MA ATYRE LAKHI RAHYA CHIE.
+    const value = event.target.value;
+    // SATHE SATHE JE LAKHYU CHE E VALUE PAN LAI LAISHU
+
+    // BANNE NU COMMON -> OBJECT DESTRUCTURING
+    // const {value, name} = event.target;
+
+    // AANO PAN AAPDE OBJECT BANAI SAKIE???
+    // TO FAT ARROW FUNC. BANAYU JEMA PREVIOUS VALUE PASS KARI
+    // JO FIRST NAME FIELD MA LAKHISHU TO name MA fname AAVSE, NAI TO lname, AND LAKHELU SAMAJ PADI JASE
+    // AA VALUES RETURN KARVANI {} AANO USE KARI NE
+    setfullName((preVal) => {
+      if(name === 'fname'){
+        return {
+          fname : value,
+          lname : preVal.lname
+        }
+      }
+      else{
+        return{
+          fname : preVal.fname,
+          lname : value
+        }
+      }
+    });
+  }
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    alert('Form Submitted');
+    // ONSUBMIT PAR LAI NAI KARIE, AA VAKHAT JEM LAKHISHU EM PRINT KARISHU
+  }
+  return(
+    <>
+      <form onSubmit={onSubmit}>
+        <h1> HELLO {fullName.fname} {fullName.lname} </h1>
+        <input type="text" placeholder="Enter First Your Name" onChange={inputEvent} value={fullName.fname} name='fname' />
+        <input type="text" placeholder="Enter Second Your Name" onChange={inputEvent} value={fullName.lname}  name='lname'/>
+        {/* BANNE MATE onChange EVENT SAME KARI DIDHU, value PAN SET KARI, BANNE NE UNIQUEUE IDENTITY AAPVA name AAPYU */}
+        <button type="submit"> Submit </button>
+      </form>
+    </>
+  )
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 37-----------
+
+// AMA KAI BAU KHAS NAI KARYU
+// UPER NA CODE MA 2 BIJI TEXT FIELD ADD KARI NE ENA MATE KAM KARYU
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 38 (Spread Operator)  -----------
+
+// ... --> in React
+
+var name1 = ['rahul', rakhesh', 'priya'];
+var name2 = ['ramesh', 'suresh', 'gagan'];
+var names = [...name1, ...name2]
+// BOTH ARRAYS WILL BE INCLUDED IN names ARRAY
+var [first, ...remaining] = name1;
+console.log(first) -> rahul
+console.log(remaining) -> rakesh, priya
+
+
+const fullName = {
+  fname : "shrey",
+  lname : "parikh"
+}
+const biodata = {
+  id : 1,
+  ...fullName,
+  gender : "male",
+  age : 20
+}
+
+
+
+
+
+
+
+
+
+
+//---------VID = 39 = 36+38  -----------
+// USING THE CONCEPTS OF 36 & 38
+
+import React, { useState } from "react";
+
+const App = () => {
+  const [fullName, setFullName] = useState({
+    fname : '',
+    sname : ''
+  })
+
+  const inputEvent = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setFullName((preValue) => {
+      return{
+        ...preValue,
+        [name] : value
+      }
+    }
+    )   
+  }
+
+  return(
+    <>
+      <h1> HELLO {fullName.fname} {fullName.sname} </h1>
+      <input type='text' placeholder="Enter your first name" onChange={inputEvent} value={fullName.fname} name="fname" />
+      <input type='text' placeholder="Enter your second name" onChange={inputEvent} value={fullName.sname} name="sname" />
+      <button type="sublit"> SUBMIT </button>
+    </>
+  )
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 40-----------
+
+
+
+
+
+// 2-3 PROJECT BAKI CHE VACCHE
+// TODO LIST VADA 2, EMA BOOTSTRAP/MATERIAL UI VAGAR VADO KHAS KARVO
+// GOOGLE KEEP CLONE- E JOI LEVO JAROOR LAGE TO KARVO
+
+
+---------------------------TODO LIST-----------------------------------------------------
+import React, { useState } from "react";
+
+//aa dar vakhat magajmari na karvi hoy to css file ma lakhine sudhara karva jem joie em ne css file import kari devi
+const mdiv= {
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "yellow",
+    textAlign:"center"
+}
+const hdiv= {
+    width: "25%",
+    height: "60vh",
+    background: "cyan",
+    boxShadow:"5px 5px 25px -5px black",
+    borderRadius:"15px "
+}
+const hh1 = {
+    color:"pink",
+    fontSize:"50px",
+    backgroundColor:"purple",
+    boxShadow:"5px 5px 25px -5px black",
+    // padding:"6px 0 2px 0",
+    marginBottom :"10px"
+}
+const but = { color: "yellow",  border: "2px solid red",width:"40px", borderRadius: "100%",   cursor: "pointer", backgroundColor: "black", marginLeft:"10px" }
+const App=()=>{
+    const [inp,setin]=useState();
+    const [items,setItem]=useState([]);
+    const chit=(event)=>{
+        setin(event.target.value);
+    }
+    const listofItems=()=>{
+        setItem((old)=>{
+            return [...old,inp];//we get new data with the old data
+        });
+        setin("");
+    }
+    return(<>
+           <div className="main" style={mdiv}>
+             <div className="center" style={hdiv}>
+                <br/>
+                <h1 style={hh1}>ToDo List</h1>
+                <br/>
+                <input type="text" value={inp} style={{borderBottom:"2px purple",width:"60%"} } onChange={chit} placeholder="Add Items"/>
+                <button style={but} onClick={listofItems}> + </button>
+             
+                    {/* <li>{inp}</li> */}
+                     {items.map((itemval)=>{
+                        return <li>{itemval}</li>
+                     })}
+             </div>
+           </div>
+    </>);
+}
+export default App;
+
+
+
+//-------------------------VID=41---------------------------------------
+
+css sathe implement karyu chhe
+
+import React, { useState } from "react";
+const hdiv= {
+    width: "25%",
+    height: "60vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "cyan",
+    boxShadow:"5px 5px 25px -5px black",
+    borderRadius:"15px "
+}
+const mdiv= {
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "yellow",
+    textAlign:"center"
+}
+const hh1 = {
+    color:"pink",
+    fontSize:"50px",
+    backgroundColor:"purple",
+    width:"100%"
+}
+const but = { color: "yellow", padding: "12px 20px", border: "2px solid red",width:"100%", borderRadius: "5px",  textTransform: "uppercase", cursor: "pointer", justifyContent: "space-around", alignContent: "center", backgroundColor: "black", display: "flex" }
+const App=()=>{
+    const [num,setNum] = useState(0);
+    const incr=()=>{
+        setNum(num+1);
+    }
+    const decr=()=>{
+        if(num>0){
+        setNum(num-1);
+        }
+        else{
+            setNum(0);
+            alert("Sorry , It can't decrease more");
+        }
+    }
+return(
+    <>
+        <div className="main" style={mdiv}>
+            <div className="center" style={hdiv}>
+            <h1 style={hh1}>{num}</h1>
+                <span className="btn" style={{display: "flex",flexDirection:"row"}}>
+                   <button style={but} onClick={incr}>Inc</button>
+                </span>
+                <span>
+                   <button style={but} onClick={decr}>Dec</button>
+                </span>
+            </div>
+        </div>
+    </>
+);
+}
+export default App;
+
+
+
+
+//-----------------------------VID-42+43+44-----------------------------------------
+
+material ui icon no use shikhavyo chhe 
+thik chhe jaroor pade to joi levu baki kai khas nahi
+ne pachhi npm ma DIGITAL CLOCK kai rite direct use thay e badhu batavyu chhe
+
+
+
+
+
+
+//  ---- VID - 47   BOOTSTRAP -----
+// BOOTSTRAP INSTALL KARVU NE
+// BAS AA IMPORT KARVU, NE COPY PASTE KARYA KARO
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 51   ...  Context API  ...   -----------
+// THODU AJIB LAGE CHE AAGAD JOIE
+// PELA AAPDE App->A->B->C HOY TO props DRILLING KARVU PADTU JO APP NE C MA DATA NU KAM HOY TO
+// PAN CONTEXT API THI AAPDE DIRECT C SUDHI JAI SAKIE CHIE
+
+// EK const name = createContext(); KARVANU
+// 2 PART HOY Provider NE Consumer
+// Provider VALUE AAPE Consumer ENE LE, USE KARI NE RETURN KARE
+// Consumer KHALI FUNCTION J ACCEPT KARE TO FAT ARROW MA Provider NI VALUE LEVI
+
+
+// ----  App.js   ----
+// ----    EK J createContext MATE   ----
+import React, { createContext } from "react";
+import ComA from "./ComA";
+
+const FirstName = createContext();
+
+const App = () => {
+  return (
+    <>
+      <FirstName.Provider value={"Shrey"}>
+        <ComA/>
+      </FirstName.Provider>
+    </>
+  )
+}
+export default App;
+export {FirstName};
+
+
+
+//    ----   2 createContext MATE   ---- 
+import React, { createContext } from "react";
+import ComA from "./ComA";
+
+const FirstName = createContext();
+const LastName = createContext();
+
+const App = () => {
+  return(
+    <>
+      <FirstName.Provider value={"Shrey"}> 
+        <LastName.Provider value={"Parikh"}>
+          <ComA/> 
+        </LastName.Provider>
+      </FirstName.Provider>
+    </>
+  );
+};
+
+export default App;
+export {FirstName, LastName};
+
+
+
+//  ------- ComA.jsx -------
+
+----     EK J createContext MATE    ----
+import React from "react";
+import { FirstName, LastName } from "./App";
+
+const ComC = () => {
+    return(
+        <>
+            <FirstName.Consumer>
+                {(fname) => {
+                    return(
+                        <h1> My name is {fname} </h1>
+                    )
+                }}
+            </FirstName.Consumer>
+        </>
+    )
+}
+export default ComC;
+
+
+// ----  2 createContext MATE  ----
+import React from "react";
+import { FirstName, LastName } from "./App";
+
+const ComC = () => {
+  return(
+    <>
+        <FirstName.Consumer> 
+            {(fname) => {
+                return(
+                    <LastName.Consumer>
+                        {(lname) => {
+                            return <h1> My Name is {fname} {lname} </h1>;
+                        }}
+                    </LastName.Consumer>
+                )
+            }} 
+        </FirstName.Consumer>
+    </>
+  );
+}
+
+export default ComC;
+
+----ComA----------
+import React from "react";
+import ComB from "./ComB";
+const ComA=()=>{
+    return <ComB/>;
+}
+export default ComA;
+
+-----ComB----------
+import React from "react";
+import ComC from "./ComC";
+const ComB=()=>{
+    return <ComC/>;
+}
+export default ComB;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 52     ...  useContext()  ...    -----------
+// useContext PAN SAME J KAM KARSE PAN JEM UPER BAU BADHU COMPLEX THAI JATU
+// AANI MADAD THI BADHU EKDUM EASY THAI JASE
+
+// ------      App.js       -------
+import React, { createContext } from "react";
+import ComA from "./ComA";
+
+const FirstName = createContext();
+const LastName = createContext();
+
+const App = () => {
+  return(
+    <>
+      <FirstName.Provider value={"Shrey"}> 
+        <LastName.Provider value={"Parikh"}>
+          <ComA/> 
+        </LastName.Provider>
+      </FirstName.Provider>
+    </>
+  );
+};
+
+export default App;
+export {FirstName, LastName};
+
+
+
+//  ------ ComB.jsx ------
+import React, { useContext } from "react";
+import ComC from "./ComC";
+import { FirstName, LastName } from "./App";
+
+const ComB = () => {
+    const fname = useContext(FirstName);
+    const lname = useContext(LastName);
+  return(
+    <h1>My name is {fname} {lname} </h1>
+  )
+}
+
+export default ComB;
+
+
+
+
+
+
+
+
+
+
+//---------VID = 53     ...  useEffect()  ...   -----------
+// useEffect WILL BE CALLED AFTER THE render METHOD OVER.
+// PEHLI VAKHAT LOAD KARIE TYRE render METHOD CALL THASE, AND DAR VAKHAT KAI KARYA PACHI
+// 2nd MA [] CHE, JO EMPTY HASE TO BAS PELI VAAR J useEffect THASE
+// JO [num] AAPISHU TO num MATE J useEffect THASE
+
+import React, { useEffect, useState } from "react";
+
+const App = () => {
+  const [num, setNum] = useState(0);
+  const [nums, setNums] = useState(0);
+
+ // useEffect(() => {
+ //   alert("BUTTON CLICKED");
+ // });
+
+  useEffect(() => {
+    alert("KYA HAI?, KAM KAR APNA");
+  }, [] );   
+
+  return(
+    <>
+      <button onClick={() => {setNum(num+1)}}> Click Me {num} </button>
+      <br/>
+      <button onClick={() => {setNums(nums+1)}}> Click Me {nums} </button>
+    </>
+  )
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 54-----------
+// CHALLENGE -> useEffect NO USE KARI NE BUTTON PAR CLICK COUNT JODE UPER title MA PAN COUNT AAVU JOIE
+// ""----- useEffect ALWAYS ACCEPT FUNCTION -----""
+
+import React, { useEffect, useState } from "react";
+const App = () => {
+  const [num, setNum] = useState(0);
+  useEffect(() => {
+    document.title = `YOU CLICKED ME ${num} TIMES`
+  });
+  return(
+    <button onClick={() => {setNum(num+1)}}> Click Me {num} </button>
+  )
+}
+export default App;
+
+
+
+
+
+
+// ------   VACHE EKK COVID TRACKER VADO VIDEO CHE E BAKI CHE   ------
+
+
+
+
+
+
+
+//---------VID = 55    ...  Pokemon API use -> AXIOS  ...   -----------
+// EM TO KHABAR PADI JASE NA PADE TO VIDEO JOI LEVO
+
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+
+const App = () => {
+  const [num, setNum] = useState();
+  const [name, setName] = useState();
+  const [moves, setMoves] = useState();
+
+  useEffect(() => {
+    async function getData(){
+      const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${num}`);
+      console.log(res);
+    
+      setName(res.data.name);
+      setMoves(res.data.moves.length);
+    }
+    getData();
+  })
+
+  return(
+    <>
+      <h1> YOU SELECTED : {num} </h1>
+      <h1> Pokemon Name : {name} </h1>
+      <h1> Pokemon Moves : {moves} </h1>
+      <select value={num} onChange={(event) =>{
+        setNum(event.target.value);
+      }}>
+        <option value='1'> 1 </option>
+        <option value='3'> 3 </option>
+        <option value='4'> 4 </option>
+        <option value='5'> 5 </option>
+        <option value='25'> 25 </option>
+      </select>
+    </>
+  )
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 56    ...   React-Router  ...   -----------
+
+// ------  index.js  ------
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+import App from './App';
+import "./index.css"
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+  ,document.getElementById('root')
+)
+
+
+
+// -----  App.js  -----
+  
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import About from "./About";
+import Contact from "./Contact";
+const App = () => {
+  return(
+    <>
+      <Switch>
+        <Route exact path="/" component={About} />
+        <Route path="/contact" component={Contact} />
+      </Switch>
+      {/* <About />
+      <Contact /> */}  // AA SIMPLE CHE AANA THI KAI NAI THAY
+    </>
+  )
+}
+export default App;
+---------------------for v6 of react router dom use of different code(syntaxt alag chhe)------------------------------------------------
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import About from "./About";
+import Contact from "./Contact";
+import Error from "./Error";
+const App=()=>{
+  return(
+    <>
+
+    <Routes>
+      
+        <Route path="/" element={<About/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="*" element={<Error/>}/>
+       
+    </Routes>
+    </>
+  );
+}
+export default App;
+
+
+
+
+
+// -----   About.jsx = Contact.jsx(Contact mate)  -----
+import React from "react";
+const About = () => {
+    return(
+        <h1> About Page </h1>
+    )
+}
+export default About;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 57   ...  NavBar SATE ROUTER + LINK   ...   -----------
+
+// ------  App.js   ------
+
+
+
+// ------    NavBar.jsx   ------
+import React from "react";
+// import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const Navbar = () => {
+    return(
+        <>
+            {/* <Link to="/" > About Us </Link>
+            <Link to="/contact" > Contact Us</Link> */}
+
+            <NavLink activeClassName="active_class" exact to="/" > About Us </NavLink>
+            <NavLink activeClassName="active_class" to="/contact" > Contact Us</NavLink>
+            {/* NavLink thi aapde CSS add kari shakishu, import karvu Link ke NavLink */}
+
+            <br/>
+            <br/>
+            <a href="/"> About </a>
+            <a href="/contact"> Contact </a>
+        </>
+    )
+}
+export default Navbar;
+
+
+
+// CSS code (index.css)
+a.active_class{
+    color : darkred;
+    border-bottom : 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 58    ...    React Router Render Method    ...     -----------
+// BAKI BADHA CODE SAME
+// AHIYA AAPDE PROPS SEND KARISHU
+// PAN AHIYA PROPS ALAG RITE MOKLASE
+// 1) USING COMPONENT  2) USING RENDER METHOD
+// BANNE MA OUTPUT MA KAI J KHAS FARAK NATHI, KOI PAN USE KARI SAKASE
+// render METHOD CHE E JO KAIK CHANGE HASE TO E KARI NE BATAVSE, JO CHANGE NAI HOY TO JUNU J BATAI DESE
+// JYARE component METHOD DAR VAKHAT NAVU BANAVSE
+// ---- JYARE PROPS MOKALVANA HOY TO render , NE EMNEM KAM HOY TO component ----
+// eg :- render MA JO KOI PAINTING MANGE TO AAPDE PELI VAAR BANAI NE BATAISHU, FARI KOI MANGE NE CHANGE NAI HOY TO E J JUNI BATAI DAISHU 
+// JYARE component MA AAPDE DAR VAKHAT NAVI PAINTING BANAI NE BATAISHU, JE NAI BARABAR
+
+
+// -----   App.js   -----
+
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import About from './About';
+import Contact from './Contact';
+import Navbar from './Navbar'
+
+const App = () => {
+  return(
+    <>
+      <Navbar/>
+      <br />
+      <br/>
+      <Switch>
+        {/* <Route exact path="/" component={About} />  */}
+        {/* <Route path="/contact" component={Contact} />  */}
+        <Route exact path="/" component={() => <About name="About us"/>} /> //v6 ma pele thi j component style <About/> jevu lakhie chhe etle function banava ni jaroor nahi
+        <Route path="/contact" render={() => <Contact name="Contact"/>} /> 
+      </Switch>
+    </>
+  )
+}
+export default App;
+
+
+
+// -----  About.jsx  ------
+import React from "react";
+const About = (props) => {
+    return(
+        <h1> {props.name} </h1>
+    )
+}
+export default About;
+
+
+//  -----   Contact.jsx   ------
+import React from "react";
+const Contact = (props) => {
+    return(
+        <h1> Hello, I am {props.name} Page </h1>
+    )
+}
+export default Contact;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 59    ...  useParams()  ...   -----------
+// AAPDE About PAR TO JAIE CHIE PAN JO /About/xyz LAKHIE TO KOI PAGE PAR NAI JATA ENA MATE AA USE THAY CHE
+// NOTES KARTA THODU EXTRA LAKHAYU CHE, JO JAROOR PADE TO VIDEO JOI LEVO
+// JO About/xyz/pqr KARISHU TO AAMA NAI THAY TO EXTRA MA BAS KHALI ETLU J KIDHU CHE, BAU KAI NATHI BAS BIJU EK ADD KARVANU CHE
+
+
+// ----- App.js ------
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import About from './About';
+import Contact from './Contact';
+import User from './User';
+import Navbar from './Navbar'
+
+const App = () => {
+  return(
+    <>
+      <Navbar/>
+      <br />
+      <br/>
+      <Switch>
+        <Route exact path="/" component={About} /> 
+        <Route path="/contact" component={Contact} /> 
+        <Route path="/user/:name" component={User} /> 
+      </Switch>
+    </>
+  )
+}
+export default App;
+
+
+// ----- User.jsx -----
+import React from "react";
+import { useParams } from "react-router-dom";
+// AA IMPORT KARVU
+
+// const User = ({match}) => {
+//     return(
+//         <h1> User {match.params.name} Page </h1>
+//     )
+// }
+// AA JO useParams NA VAPRIE TO
+
+const User = () => {
+    const {name} = useParams();   //  About/xyz/pqr aavu kai add karvu hoy to bijo parameter name ni sathe lai levo 
+    return(
+        <h1> User {name} Page </h1>
+    )
+}
+
+export default User;
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 60    ...   useLocation()    ...    -----------
+// BAKI FILES SAME
+// BAU KHAS TO NAI BAS PATH KAYO CHE E KESE
+
+import React from "react";
+import { useParams, useLocation } from "react-router-dom";
+
+const User = () => {
+    const {name} = useParams();
+    const location = useLocation();
+    return(
+        <>
+            <h1> User {name} Page </h1>
+            <p> My Current location is {location.pathname} </p>
+            {location.pathname === '/user/react' ? <button onClick={()=> {alert("HELLO JI")}}> Click me </button> : null}
+        </>
+    )
+}
+export default User;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------VID = 61     ...    useHistory()    ...     -----------
+// BAKI FILES AS IT IS
+// useHistory AAPDA NE LAST VISITED PAGE PAR LAI JAY CHE
+// useHistory NA BIJA PAN USE CHE E NICHE KARYA CHE
+
+import React from "react";
+import { useParams, useLocation, useHistory } from "react-router-dom";
+
+const User = () => {
+    const {name} = useParams();
+    const location = useLocation();
+    const history = useHistory();
+    return(
+        <>
+            <h1> User {name} Page </h1>
+            <p> My Current location is {location.pathname} </p>
+            {/* {location.pathname === '/user/react' ? <button onClick={()=> history.goBack()}> Go Back </button> : null} */}
+            {location.pathname === '/user/react' ? <button onClick={()=> history.push("/")}> Home Page </button> : null}
+        </>
+    )
+}
+export default User;
+//v6 upar ma useHistory ni jagya e useNavigate chhe ne history.push ma push kadhi nakhavu
+
+
+
+
+
+
+
+
+
+
+
+//--------- VID = 62 -----------
+// CHALLENGE TYPE - LIVE SEARCH PROJECT
+
+// -----   App.js   -----
+import React, { useState } from "react";
+import SearchImg from "./SearchImg";
+
+const App = () => {
+  const [img, setImg] = useState('');
+  const inputEvent = (event) => {
+    setImg(event.target.value);
+  }
+  return(
+    <>
+      <input type="text" placeholder="Search Anything" value={img} onChange={inputEvent} />
+      <div>
+        <SearchImg name={img} />
+      </div>
+    </>
+  )
+}
+export default App; 
+
+---------------------->my altered adhuro code 😁😀<-------------------------------
+import React, { useState } from "react";
+const Search = () =>{
+    const [img,setImg]=useState("");
+    const inp =(e)=>{
+        setImg(e.target.value);
+    }
+    return (
+        <>
+            <br/>
+            <br/>
+            <br/>
+            <div className="hii" style={{backgroundColor:"yellow",display:"flex",borderRadius:"15px", justifyContent:"center"}}>
+                   <input value={img} style={{backgroundColor:"yellow"}} type="text" placeholder="Search here" onChange={inp}/>
+            </div>
+        </>
+    );
+}
+export default Search;
+-----------------------------------------------------------------------------------------------------------------------
+
+
+// -----   SearchImg.jsx   -----
+import React from "react";
+
+const SearchImg = (props) => {
+    const img = `https://source.unsplash.com/300x400/?${props.name}`;
+    return(
+        <>
+            <img src={img} alt="IMAGE" />
+        </>
+    )
+}
+export default SearchImg;
+
+
+
+
+
+
+
+
+
+
+
+
+//---------   VID = 64+65    ...  404 PAGE + REDIRECT  ...   -----------
+// 64-> 404 NOT FOUND PAGE -> ENA MATE LAKHYU CHE, SIMPLE CHE, BAS Error.jsx FILE BANAI DEVI
+// 65-> JO AAPDE KOI NOT EXISTING PAGE PAR JAIE TO DIRECT REDIRECT THAI JAIE(JE PAGE PAR THAVU HOY TYA)
+// TO import ma Redirect PAN ADD KARVANU, AND NICHE LAKHYU CHE E PRAMANE KARVANU
+
+
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import About from './About';
+import Contact from './Contact';
+import User from './User';
+import Navbar from './Navbar'
+
+const App = () => {
+  return(
+    <>
+      <Navbar/>
+      <br />
+      <br/>
+      <Switch>
+        <Route exact path="/" component={About} /> 
+        <Route exact path="/contact" component={Contact} /> 
+        <Route exact path="/user/:name" component={User} /> 
+        {/* <Route component={Error} />  */}
+        <Redirect to="/" /> 
+      </Switch>
+    </>
+  )
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -----------   REDUX   --------------
+
+
+>>>>>  index.js  <<<<<
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './App';
+import store from "./store";
+import { Provider } from "react-redux";
+
+ReactDOM.render(
+    <Provider store={store} >
+      <App/>
+    </Provider>
+  , document.getElementById('root')
+)
+
+
+
+>>>>>  App.js  <<<<<
+
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { incNumber, decNumber } from './actions'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+const App = () => {
+  const myState = useSelector((state) => state.changeTheNumber);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <h1> Increment/Decrement Counter </h1>
+      <h4> Using React & Redux </h4>
+      <div>
+        <button type="button" class="btn btn-outline-danger" onClick={() =>dispatch(decNumber()) } > - </button>
+        <input type="text" value={myState} />
+        <button type="button" class="btn btn-outline-success" onClick={() =>dispatch(incNumber()) } > + </button>
+      </div>
+    </>
+  )
+} 
+export default App
+
+
+// application ma total ketli action che - what to do - increment,decrement
+// reducer -> how to do  (upDown ma je export karyu e aapdu reducer che)
+// reducer ma badho data/state hoy ene aapde store karvano etle aapde store.js banayu
+// multiple reducer pan hoi sake to combine reducer ma pass karyu -> rootreducre navu re combine reducer banyu
+// rootreducer ne store.js ma pass kari didhu
+// createStore thi navo store banayo ne application no badho data pass kari didho
+// have e data ne pass karva mate aapdne joie provider -> ema as props store ke jema aapda badha state che ene pass kari didhu
+// have App component ma aapi didhu, to have koi pan hase e store ne ena data ne call kari sakse ne use kari sakse 
+// to e data ne call ke use karva useSelector vapryu je state ne get karse -> function ne call karva mate(action trigger karva mate)...
+// we need a dispatch -> ena mate aapde useDispatch ne import karyu -> ne aapde action ni anadr lakhela function ne call karishu
+// 
+
+
+// PAYLOAD NU JOVANU BAKI....
+
+
+
+
+>>>>>   action-> index.js   <<<<<
+// JETLA PAN ACTION PERFORM THAVANA HOY E AHIYA LAKHVA
+
+export const incNumber = () => {
+    return{
+        type : "INCREMENT"
+    }
+}
+export const decNumber = () => {
+    return{
+        type : "DECREMENT"
+    }
+}
+
+
+
+
+>>>>>   reducer   <<<<<
+>>>>>  upDown.js  <<<<<
+// AHIYA AAPDE ACTION KAI RETE KARVANI CHE ENA VISHE LAKHVANU CHE
+
+const initialState = 0;
+const changeTheNumber = (state=initialState, action) => {
+    switch(action.type){
+        case  "INCREMENT" : return state + 1;
+        case  "DECREMENT" : return state - 1;
+        default: return state;
+    }
+}
+export default changeTheNumber;
+
+
+
+>>>>>   index.js   <<<<<
+// AHIYA AAPDU RECUCER HASE
+// EK J ROOT REDUCER HOY REDUX STORE PASE
+// AHIYA AAPDE JETALA REDUCER HASE BANAI DAISHU
+// EK J MAIN REDUCER HASE JEMA BADHA REDUCER HASE, AND ENE AAPDE REDUX STORE MA PASS KARISHU
+// AHIYA AAPDI PASE EK J REDUCER CHE
+
+import changeTheNumber from "./upDown";
+// BADHA NE COMBINE KARVA
+import { combineReducers } from "redux";
+
+// const MAIN REDUCER
+const rootReducer = combineReducers({
+    changeTheNumber
+
+    // MULTIPLE REDUCER HOY TO AA RITE LAKHVANU(kadach key:value pair ni rite)
+    // changeTheNumber,
+    // changeTheBg
+    // changeTheName
+});
+export default rootReducer;
+
+
+
+
+>>>>>   store.js   <<<<<
+// EK J REDUX STORE HOY
+
+import { createStore } from "redux";
+
+import rootReducer from "./reducers";
+
+const store = createStore(rootReducer);
+
+export default store;
+
+
+
+
+
